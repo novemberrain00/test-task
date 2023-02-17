@@ -13,7 +13,7 @@
       <div class="header__logo">
         <img src="images/logo.svg" alt=":(" class="header__logo-img">
       </div>
-      <button class="btn btn_rounded">+</button>
+      <button class="btn btn_rounded"><img src="images/plus.svg" alt=":("></button>
       <nav class="header__nav">
         <a href="#" class="header__nav-item header__nav-item_active">Рабочий стол</a>
         <a href="#" class="header__nav-item">Сделки</a>
@@ -22,7 +22,7 @@
         <a href="#" class="header__nav-item">Контакты</a>
         <a href="#" class="header__nav-item">Компании</a>
         <a href="#" class="header__nav-item subheader-menu-opener">
-          <img src="images/dots-white.svg" alt=":(">
+          <img src="images/dots-white.svg" class="dots-icon-white" alt=":(">
         </a>
       </nav>
     </header>
@@ -76,7 +76,7 @@
               Задачи <span class="slash-separator card__separator"> / </span> 
               <div class="calendar-trigger">
                 <div class="dropdown">
-                  <span class="dropdown__opener link calendar-period-selector">Неделя</span>
+                  <span class="calendar-trigger__item dropdown__opener calendar-period-selector">Неделя</span>
                   <div class="dropdown__menu dropdown__menu_short calendar-dropdown">
                     <ul class="dropdown__list calendar-period-menu">
                       <li class="dropdown__item"><a class="dropdown__link" href="#">Неделя</a></li>
@@ -85,7 +85,7 @@
                     </ul>
                   </div>
                 </div>
-                <span class="calendar-trigger__item calendar-opener link">08.01.22 - 15.01.22</span>
+                <span class="calendar-trigger__item calendar-opener">08.01.22 - 15.01.22</span>
                 <div class="calendar" id="calendar-1"></div>
               </div>
             </div>
@@ -143,7 +143,7 @@
               Сделки <span class="slash-separator card__separator"> / </span> 
               <div class="calendar-trigger">
                 <div class="dropdown">
-                  <span class="calendar-trigger__item dropdown__opener link calendar-period-selector">Неделя</span>
+                  <span class="calendar-trigger__item dropdown__opener calendar-period-selector">Неделя</span>
                   <div class="dropdown__menu dropdown__menu_short calendar-dropdown">
                     <ul class="dropdown__list calendar-period-menu">
                       <li class="dropdown__item"><a class="dropdown__link" href="#">Неделя</a></li>
@@ -152,7 +152,7 @@
                     </ul>
                   </div>
                 </div>
-                <span class="calendar-trigger__item link calendar-opener">08.01.22 - 15.01.22</span>
+                <span class="calendar-trigger__item calendar-opener">08.01.22 - 15.01.22</span>
                 <div class="calendar" id="calendar-2"></div>
               </div>
             </div>
@@ -436,7 +436,10 @@
         </nav>
       </div>
       <div class="sidebar__deals-body"> 
-        <input type="text" placeholder="Поиск и фильтр" class="input sidebar__deals-input">
+        <div class="input-wrapper">
+          <img src="images/search.svg" class="search-icon input-icon" alt=":(">
+          <input type="text" placeholder="Поиск и фильтр" class="input sidebar__deals-input">
+        </div>
         <div class="sidebar__deals-tasks">
           <div class="sidebar__deals-task task task_today">
             <div class="task__top">
@@ -490,7 +493,7 @@
       </div>
     </div>
     <div class="sidebar__content">
-      <div class="dropdown">
+      <div class="dropdown" style="height: 56px;">
         <img src="images/user_ava.jpg" alt=";(" class="sidebar__avatar dropdown__opener">
         <div class="dropdown__menu sidebar__dropdown">
           <div class="dropdown__user">
@@ -514,7 +517,7 @@
       </div>
       </div>
       <nav class="sidebar__nav">
-        <a class="sidebar__nav-link deals-opener" href="#"><img src="images/burger.svg" alt=":("></a>
+        <a class="sidebar__nav-link deals-opener" href="#"><img class="burger-icon" src="images/burger.svg" alt=":("></a>
         <a class="sidebar__nav-link" href="#"><img src="images/messages.svg" alt=":("></a>
         <a class="sidebar__nav-link" href="#"><img src="images/notifications.svg" alt=":("></a>
         <a class="sidebar__nav-link" href="#"><img src="images/time.svg" alt=":("></a>

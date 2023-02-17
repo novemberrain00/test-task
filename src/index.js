@@ -5,8 +5,13 @@ import Chart from 'chart.js/auto';
 import Calendar from "color-calendar";
 import "color-calendar/dist/css/theme-basic.css";
 
-import DotsImg from './images/dots.svg';
+import Dots from './images/dots.svg';
+import DotsWhite from './images/dots-white.svg';
 import DotsActive from './images/dots-active.svg';
+import BurgerIcon from './images/burger.svg';
+import BurgerIconActive from './images/burger-active.svg';
+import QuestionImg from './images/question.svg';
+import QuestionImgActive from './images/question-active.svg';
 
 (async function() {
   const data = [
@@ -39,7 +44,7 @@ const dropdownBlocks = document.querySelectorAll('.dropdown');
 dropdownBlocks.forEach(ddblock => {
   const menu = ddblock.querySelector('.dropdown__menu');
 
-  ddblock.addEventListener('click', () => {
+  ddblock.querySelector('.dropdown__opener').addEventListener('click', () => {
     //ddblock.querySelector('img.dots-icon').setAttribute('src', DotsActive);
     menu.classList.toggle('dropdown__menu_active');
   });
@@ -92,26 +97,20 @@ const alertOpeners = document.querySelectorAll('.alert-opener'),
 alertOpeners.forEach(opener => {
   opener.addEventListener('click', () => {
     modalsBlock.classList.add('modals_active');
+
+    document.addEventListener('click', e => {
+      if(e.target === modalsBlock && e.target !== alertModal) {
+        modalsBlock.classList.remove('modals_active');
+      }
+    });
   });
 });
+
 
 modalClosers.forEach(closer => {
   closer.addEventListener('click', e => {
     modalsBlock.classList.remove('modals_active');
   });
-});
-
-
-const dealsOpener = document.querySelector('.deals-opener'),
-  dealsCloser = document.querySelector('.sidebar__deals-closer'),
-  sidebarDeals = document.querySelector('.sidebar__deals');
-
-dealsOpener.addEventListener('click', () => {
-  sidebarDeals.classList.add('sidebar__deals_active')
-});
-
-dealsCloser.addEventListener('click', () => {
-  sidebarDeals.classList.remove('sidebar__deals_active')
 });
 
 const helpOpener = document.querySelector('.help__opener'),
@@ -125,9 +124,6 @@ helpOpener.addEventListener('click', () => {
 helpCloser.addEventListener('click', () => {
   helpBlock.classList.remove('help__block_active');
 });
-
-
-
 
 const subheaderMenu = document.querySelector('.subheader__menu'),
   subheaderInfo = document.querySelector('.subheader__info'),
@@ -155,4 +151,59 @@ document.querySelectorAll('.calendar-opener').forEach((opener, i) => {
     document.querySelectorAll('.calendar')[i].classList.toggle('calendar_active');
   });
 });
-  
+
+
+const changeIcon = (selector, initial, active) => {
+  document.querySelectorAll(selector).forEach((icon, i) => {
+    icon.addEventListener('mouseover', () => {
+      icon.setAttribute('src', active);
+    });
+
+    icon.addEventListener('mouseout', () => {
+      icon.setAttribute('src', initial);
+    });
+  });
+}
+
+changeIcon('.dots-icon', Dots, DotsActive);
+changeIcon('.dots-icon-white', DotsWhite, DotsActive);
+changeIcon('.question-icon', QuestionImg, QuestionImgActive);
+//changeIcon('.burger-icon', BurgerIcon, BurgerIconActive);
+
+const dealsOpener = document.querySelector('.deals-opener'),
+  dealsCloser = document.querySelector('.sidebar__deals-closer'),
+  sidebarDeals = document.querySelector('.sidebar__deals');
+
+dealsOpener.addEventListener('click', () => {
+  sidebarDeals.classList.add('sidebar__deals_active')
+});
+
+dealsCloser.addEventListener('click', () => {
+  sidebarDeals.classList.remove('sidebar__deals_active')
+});
+
+const sidebarOpening = () => {
+  document.querySelector('.deals-opener').addEventListener('mouseover', () => {
+      document.querySelector('.deals-opener').style.backgroundColor = '#273142';
+      document.querySelector('.deals-opener img').setAttribute('src', BurgerIconActive);
+  });
+
+  document.querySelector('.deals-opener').addEventListener('click', () => {
+    document.querySelector('.deals-opener').style.backgroundColor = '#273142';
+    document.querySelector('.deals-opener img').setAttribute('src', BurgerIconActive);
+  });
+
+  dealsCloser.addEventListener('click', () => {
+    document.querySelector('.deals-opener').style.backgroundColor = 'transparent';
+    document.querySelector('.deals-opener img').setAttribute('src', BurgerIcon);
+  });
+
+  document.querySelector('.deals-opener').addEventListener('mouseout', () => {
+    if(!sidebarDeals.classList.contains('sidebar__deals_active')) {
+      document.querySelector('.deals-opener').style.backgroundColor = 'transparent';
+      document.querySelector('.deals-opener img').setAttribute('src', BurgerIcon);
+    }
+  });
+};
+
+sidebarOpening();
