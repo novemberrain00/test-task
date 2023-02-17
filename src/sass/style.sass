@@ -179,6 +179,10 @@ body
   &__info
     display: flex
 
+.is-online 
+  display: block
+  margin-bottom: -10px
+
 .container 
   max-width: 1888px
   margin: 0 auto
@@ -228,7 +232,7 @@ body
   &__menu
     display: none
     position: absolute
-    left: -100%
+    right: 0
     width: 200px
     border-radius: 4px
     background: #FFFFFF
@@ -264,9 +268,14 @@ body
     flex-direction: column
     padding: 12px 16px
     font-size: 14px
+  &__username 
+    display: flex
+    align-items: center
+    justify-content: space-between
   &__job
     font-size: 12px
     color: #7F8FA4
+    font-weight: bold
   &__helper
     display: flex
     justify-content: space-between

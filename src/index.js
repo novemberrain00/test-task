@@ -12,6 +12,19 @@ import BurgerIcon from './images/burger.svg';
 import BurgerIconActive from './images/burger-active.svg';
 import QuestionImg from './images/question.svg';
 import QuestionImgActive from './images/question-active.svg';
+import ProfileImg from './images/profile.svg';
+import ProfileImgActive from './images/profile-active.svg';
+import LogoutImg from './images/logout.svg';
+import LogoutImgActive from './images/logout-active.svg';
+import EditImg from './images/edit.svg';
+import EditImgActive from './images/edit-active.svg';
+import TrashImg from './images/trash.svg';
+import TrashImgActive from './images/trash-active.svg';
+import OptionsImg from './images/options.svg';
+import OptionsImgActive from './images/options-active.svg';
+import RepeatImg from './images/repeat.svg';
+import RepeatImgActive from './images/repeat-active.svg';
+
 
 (async function() {
   const data = [
@@ -169,6 +182,27 @@ changeIcon('.dots-icon', Dots, DotsActive);
 changeIcon('.dots-icon-white', DotsWhite, DotsActive);
 changeIcon('.question-icon', QuestionImg, QuestionImgActive);
 //changeIcon('.burger-icon', BurgerIcon, BurgerIconActive);
+
+const menuChangeIcon = (selector, initial, active) => {
+  document.querySelectorAll(selector).forEach(item => {
+    item.parentNode.addEventListener('mouseover', () => {
+      item.setAttribute('src', active);
+    });
+  });
+
+  document.querySelectorAll(selector).forEach(item => {
+    item.parentNode.addEventListener('mouseout', () => {
+      item.setAttribute('src', initial);
+    });
+  });
+}
+
+menuChangeIcon('.profile-icon', ProfileImg, ProfileImgActive);
+menuChangeIcon('.logout-icon', LogoutImg, LogoutImgActive);
+menuChangeIcon('.edit-icon', EditImg, EditImgActive);
+menuChangeIcon('.trash-icon', TrashImg, TrashImgActive);
+menuChangeIcon('.options-icon', OptionsImg, OptionsImgActive);
+menuChangeIcon('.repeat-icon', RepeatImg, RepeatImgActive);
 
 const dealsOpener = document.querySelector('.deals-opener'),
   dealsCloser = document.querySelector('.sidebar__deals-closer'),
